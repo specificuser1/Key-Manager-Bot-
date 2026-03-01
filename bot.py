@@ -5,14 +5,15 @@ import json
 import os
 import asyncio
 from dashboard import run_dashboard
+import os
 
 # ---------- LOAD CONFIG ----------
-with open("config.json") as f:
-    config = json.load(f)
+TOKEN = os.getenv("TOKEN")
 
-TOKEN = config["TOKEN"]
-ROLE_ID = config["ROLE_ID"]
-ADMIN_IDS = config["ADMIN_IDS"]
+if not TOKEN:
+    raise ValueError("TOKEN not found! Set it in Railway Variables.")
+ROLE_ID = so.getenv["ROLE_ID"]
+ADMIN_IDS = so.getenv["ADMIN_IDS"]
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
