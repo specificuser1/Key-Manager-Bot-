@@ -86,9 +86,18 @@ class KeyPanel(View):
     async def admins(self, interaction: discord.Interaction, button: Button):
         await interaction.response.send_message(f"Admins: {ADMIN_IDS}", ephemeral=True)
 
-    @discord.ui.button(label="Dashboard", style=discord.ButtonStyle.link, url="http://localhost:5000")
-    async def dashboard(self, interaction: discord.Interaction, button: Button):
-        pass
+    class KeyPanel(View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+        # Dashboard Link Button
+        dashboard_button = discord.ui.Button(
+            label="Dashboard",
+            style=discord.ButtonStyle.link,
+            url="https://your-railway-url.up.railway.app"
+        )
+
+        self.add_item(dashboard_button)
 
     @discord.ui.button(label="Status", style=discord.ButtonStyle.secondary)
     async def status(self, interaction: discord.Interaction, button: Button):
