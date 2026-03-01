@@ -6,14 +6,18 @@ import os
 import asyncio
 from dashboard import run_dashboard
 import os
+from dotenv import load_dotenv
 
 # ---------- LOAD CONFIG ----------
+load_dotenv()
+
 TOKEN = os.getenv("TOKEN")
+ROLE_ID = int(os.getenv("ROLE_ID"))
+ADMIN_IDS = [int(x) for x in os.getenv("ADMIN_IDS").split(",")]
 
 if not TOKEN:
-    raise ValueError("TOKEN not found! Set it in Railway Variables.")
-ROLE_ID = so.getenv["ROLE_ID"]
-ADMIN_IDS = so.getenv["ADMIN_IDS"]
+    raise ValueError("TOKEN not found in .env")
+
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
