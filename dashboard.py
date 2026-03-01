@@ -9,4 +9,6 @@ def home():
     return render_template("index.html")
 
 def run_dashboard():
-    threading.Thread(target=lambda: app.run(host="0.0.0.0", port=5000)).start()
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
